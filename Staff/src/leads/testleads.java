@@ -1,3 +1,5 @@
+package leads;
+
 import java.time.Duration;
 
 import org.openqa.selenium.By;
@@ -5,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class SignOut {
+public class testleads {
 	public static void main(String[] args) throws InterruptedException {
 
 		System.setProperty("webdriver.chrome.driver",
@@ -22,17 +24,29 @@ public class SignOut {
 
 		driver.findElement(By.linkText("LOGIN")).click(); // using Selenium click button method
 
-		driver.findElement(By.id("username")).sendKeys("NEC0820024@nttf.co.in");
+		driver.findElement(By.id("username")).sendKeys("dineshbabujalla@gmail.com");
 		driver.findElement(By.name("password")).sendKeys("P@ssw0rd@123");
 
 		WebElement loginButtonId = driver.findElement(By.xpath("/html/body/section/form/div[3]/button"));
 		loginButtonId.click();
 
-		// Click dropdown button
-		driver.findElement(By.xpath("//*[@id=\"profileDropdown\"]/span")).click();
+		// click candidate
+		driver.findElement(By.xpath("//*[@id=\"sidebar\"]/ul/li[2]/a")).click();
 
-		// Click Signout button
-		driver.findElement(By.xpath("/html/body/div/div/nav/div/ul[2]/li/div/a[3]")).click();
+		// click leads
+		driver.findElement(By.xpath("//*[@id=\"candidate\"]/ul/li/a")).click();
 
+		// Search box
+		driver.findElement(By.xpath("//*[@id=\"search\"]")).sendKeys("shanjay");
+
+		driver.findElement(By.xpath("/html/body/div/div/div/div/div/div[2]/div[1]/form/div/input[2]")).click();
+
+		// click Complete Process
+		driver.findElement(By.xpath("/html/body/div/div/div/div/div/div[2]/div[2]/table/tbody/tr/td[6]/a")).click();
+		//Interview
+		driver.findElement(By.xpath("/html/body/div/div/div/div/div/div[2]/div/div[3]/div/a")).click();
+		
+		//Candidates need for this program
+		driver.findElement(By.xpath("//*[@id=\"optionsRadios9\"]")).click();
 	}
 }

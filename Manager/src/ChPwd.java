@@ -1,3 +1,5 @@
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,21 +15,23 @@ public class ChPwd {
 		// maximize the window
 		driver.manage().window().maximize();
 
+		// Implicit Wait
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+
 		driver.get("http://ec2-65-1-5-19.ap-south-1.compute.amazonaws.com:8000/");
 
 		driver.findElement(By.linkText("LOGIN")).click(); // using Selenium click button method
-		Thread.sleep(2000);
+		
 		driver.findElement(By.id("username")).sendKeys("manager@gmail.com");
 		driver.findElement(By.name("password")).sendKeys("alok@123");
 		WebElement loginButtonId = driver.findElement(By.xpath("/html/body/section/form/div[3]/button"));
 
 		loginButtonId.click();
-		Thread.sleep(2000);
+		
 
 		// Click dropdown button
 		driver.findElement(By.xpath("//*[@id=\"profileDropdown\"]/span")).click();
 
-		Thread.sleep(2000);
 		// Click Change Password
 		driver.findElement(By.xpath("/html/body/div/div/nav/div/ul[2]/li/div/a[2]")).click();
 

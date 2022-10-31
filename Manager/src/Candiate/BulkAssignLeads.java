@@ -1,5 +1,7 @@
 package Candiate;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,11 +17,12 @@ public class BulkAssignLeads {
 		// maximize the window
 		driver.manage().window().maximize();
 
+		// Implicit Wait
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+
 		driver.get("http://ec2-65-1-5-19.ap-south-1.compute.amazonaws.com:8000/");
-		Thread.sleep(2000);
 
 		driver.findElement(By.linkText("LOGIN")).click(); // using Selenium click button method
-		Thread.sleep(2000);
 
 		// Enter unsername and password
 		driver.findElement(By.id("username")).sendKeys("manager@gmail.com");
@@ -28,15 +31,12 @@ public class BulkAssignLeads {
 		// Click login button
 		WebElement loginButtonId = driver.findElement(By.xpath("/html/body/section/form/div[3]/button"));
 		loginButtonId.click();
-		Thread.sleep(2000);
 
 		// Click Candidate button
 		driver.findElement(By.xpath("//*[@id=\"sidebar\"]/ul/li[3]/a")).click();
-		Thread.sleep(1000);
 
 		// Click bulk Assign Leads
 		driver.findElement(By.xpath("//*[@id=\"candidate\"]/ul/li[2]/a")).click();
-		Thread.sleep(2000);
 
 		// click Unassigned leads
 		driver.findElement(By.xpath("/html/body/div/div/div/div/div/div[2]/div[1]/form[2]/div/label/input")).click();
@@ -48,10 +48,9 @@ public class BulkAssignLeads {
 
 		// Click checkbox
 		driver.findElement(By.xpath("//*[@id=\"select_all\"]")).click();
-		Thread.sleep(1500);
 
 		// Click Assign Button
 		driver.findElement(By.xpath("//*[@id=\"assignLeads\"]")).click();
-        
+
 	}
 }

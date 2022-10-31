@@ -1,3 +1,5 @@
+package dashboard;
+
 import java.time.Duration;
 
 import org.openqa.selenium.By;
@@ -15,14 +17,14 @@ public class Profile {
 		// maximize the window
 		driver.manage().window().maximize();
 
-		// Implicit Wait
+		// Implicit wait
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 
 		driver.get("http://ec2-65-1-5-19.ap-south-1.compute.amazonaws.com:8000/");
 
 		driver.findElement(By.linkText("LOGIN")).click(); // using Selenium click button method
 
-		driver.findElement(By.id("username")).sendKeys("manager@gmail.com");
+		driver.findElement(By.id("username")).sendKeys("dineshbabujalla@gmail.com");
 		driver.findElement(By.name("password")).sendKeys("P@ssw0rd@123");
 		WebElement loginButtonId = driver.findElement(By.xpath("/html/body/section/form/div[3]/button"));
 
@@ -39,13 +41,13 @@ public class Profile {
 
 		// Editing fistname, lastname, email, phone number, address
 		driver.findElement(By.name("first_name")).clear();
-		driver.findElement(By.name("first_name")).sendKeys("Alok");
+		driver.findElement(By.name("first_name")).sendKeys("Dinesh");
 		driver.findElement(By.name("last_name")).clear();
-		driver.findElement(By.name("last_name")).sendKeys("Kumar");
+		driver.findElement(By.name("last_name")).sendKeys("Babu");
 		driver.findElement(By.name("email")).clear();
-		driver.findElement(By.name("email")).sendKeys("alokkumar@nttf.co.in");
+		driver.findElement(By.name("email")).sendKeys("dineshbabujalla@gmail.com");
 		driver.findElement(By.name("phone_number")).clear();
-		driver.findElement(By.name("phone_number")).sendKeys("7306262674");
+		driver.findElement(By.name("phone_number")).sendKeys("8333055512");
 		driver.findElement(By.name("address")).clear();
 		driver.findElement(By.name("address")).sendKeys("KA");
 

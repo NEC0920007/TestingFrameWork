@@ -1,5 +1,7 @@
 package Candiate;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,11 +17,12 @@ public class leads {
 		// maximize the window
 		driver.manage().window().maximize();
 
+		// Implicit Wait
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+
 		driver.get("http://ec2-65-1-5-19.ap-south-1.compute.amazonaws.com:8000/");
-		Thread.sleep(2000);
 
 		driver.findElement(By.linkText("LOGIN")).click(); // using Selenium click button method
-		Thread.sleep(2000);
 
 		// Enter unsername and password
 		driver.findElement(By.id("username")).sendKeys("manager@gmail.com");
@@ -229,11 +232,9 @@ public class leads {
 		WebElement jo = driver.findElement(By.xpath("//*[@id=\"add_lead\"]/div[1]/div[27]/label/select"));
 		Select joining = new Select(jo);
 		joining.selectByIndex(1);
-		Thread.sleep(2000);
 
 		// click save button
 		driver.findElement(By.id("submit_btn")).click();
-		Thread.sleep(2000);
 
 	}
 }

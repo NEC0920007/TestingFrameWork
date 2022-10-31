@@ -1,5 +1,7 @@
 package Candiate;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,11 +17,12 @@ public class leads2 {
 		// maximize the window
 		driver.manage().window().maximize();
 
+		// Implicit Wait
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+
 		driver.get("http://ec2-65-1-5-19.ap-south-1.compute.amazonaws.com:8000/");
-		Thread.sleep(3000);
 
 		driver.findElement(By.linkText("LOGIN")).click(); // using Selenium click button method
-		Thread.sleep(3000);
 
 		// Enter unsername and password
 		driver.findElement(By.id("username")).sendKeys("manager@nttf.co.in");
@@ -28,7 +31,6 @@ public class leads2 {
 		// Click login button
 		WebElement loginButtonId = driver.findElement(By.xpath("/html/body/section/form/div[3]/button"));
 		loginButtonId.click();
-		Thread.sleep(2000);
 
 		// Click Candidate button
 		WebElement can = driver.findElement(By.xpath("//*[@id=\"sidebar\"]/ul/li[3]/a"));
@@ -76,6 +78,7 @@ public class leads2 {
 		// date of birth
 		driver.findElement(By.name("date_of_birth")).clear();
 		WebElement date = driver.findElement(By.xpath("//*[@id=\"add_lead\"]/div[1]/div[6]/label/input"));
+
 		// Fill date as dd/mm/yyyy as 25/09/2002
 		date.sendKeys("05092002");
 
@@ -98,14 +101,12 @@ public class leads2 {
 		WebElement Sta = driver.findElement(By.id("state"));
 		Select St = new Select(Sta);
 		St.selectByIndex(22);
-		Thread.sleep(2000);
 
 		// selecting District
 		// driver.findElement(By.id("district")).clear();
 		WebElement dist = driver.findElement(By.name("district"));
 		Select dit = new Select(dist);
 		dit.selectByIndex(2);
-		Thread.sleep(2000);
 
 		// Entering Year of pass
 		driver.findElement(By.name("year_of_pass")).clear();
@@ -171,22 +172,20 @@ public class leads2 {
 		WebElement jo = driver.findElement(By.xpath("//*[@id=\"add_lead\"]/div[1]/div[27]/label/select"));
 		Select joining = new Select(jo);
 		joining.selectByIndex(1);
-		Thread.sleep(2000);
 
 		// click save button
 		driver.findElement(By.id("submit_btn")).click();
-		Thread.sleep(2000);
-		
-		//click edit again
+
+		// click edit again
 		driver.findElement(By.xpath("//*[@id=\"edit_btn\"]")).click();
-		
-		//enter dob again
+
+		// enter dob again
 		driver.findElement(By.name("date_of_birth")).sendKeys("05122002");
-		
-		//enter reporting date again
+
+		// enter reporting date again
 		driver.findElement(By.name("reporting_date")).sendKeys("12102022");
-		
+
 		driver.findElement(By.id("submit_btn")).click();
-		
+
 	}
 }

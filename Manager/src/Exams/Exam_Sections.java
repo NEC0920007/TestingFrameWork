@@ -1,5 +1,7 @@
 package Exams;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,11 +17,12 @@ public class Exam_Sections {
 		// maximize the window
 		driver.manage().window().maximize();
 
+		// Implicit Wait
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+
 		driver.get("http://ec2-65-1-5-19.ap-south-1.compute.amazonaws.com:8000/");
-		Thread.sleep(3000);
 
 		driver.findElement(By.linkText("LOGIN")).click(); // using Selenium click button method
-		Thread.sleep(3000);
 
 		// Enter unsername and password
 		driver.findElement(By.id("username")).sendKeys("manager@gmail.com");
@@ -28,12 +31,11 @@ public class Exam_Sections {
 		// Click login button
 		WebElement loginButtonId = driver.findElement(By.xpath("/html/body/section/form/div[3]/button"));
 		loginButtonId.click();
-		Thread.sleep(2000);
 
 		// click Exam
 		driver.findElement(By.xpath("//*[@id=\"sidebar\"]/ul/li[4]/a")).click();
 		driver.findElement(By.xpath("//*[@id=\"sidebar\"]/ul/li[4]/a/span")).click();
-       
+
 		// Click Exam Sections
 		driver.findElement(By.xpath("//*[@id=\"exams\"]/ul/li[2]/a")).click();
 
@@ -55,7 +57,6 @@ public class Exam_Sections {
 
 		// Click Add Button
 		driver.findElement(By.xpath("//*[@id=\"submit_btn\"]")).click();
-		Thread.sleep(1000);
 
 		// Click Add
 		driver.findElement(By.xpath("/html/body/div/div/div/div/div/div[2]/div[2]/table/tbody/tr[1]/td[4]/a[1]"))
@@ -73,12 +74,13 @@ public class Exam_Sections {
 
 		// Click Add
 		driver.findElement(By.xpath("//*[@id=\"submit_btn\"]")).click();
-		
-		//Click Go-Back
+
+		// Click Go-Back
 		driver.findElement(By.xpath("/html/body/div[1]/div/div/div/div/form/div[3]/button")).click();
 
 		// View
-		driver.findElement(By.xpath("/html/body/div/div/div/div/div/div[2]/div[2]/table/tbody/tr[1]/td[4]/a[2]")).click();
+		driver.findElement(By.xpath("/html/body/div/div/div/div/div/div[2]/div[2]/table/tbody/tr[1]/td[4]/a[2]"))
+				.click();
 
 		// Navigate to Back
 		driver.navigate().back();
@@ -87,31 +89,26 @@ public class Exam_Sections {
 
 		driver.findElement(By.xpath("/html/body/div/div/div/div/div/div[2]/div[2]/table/tbody/tr[2]/td[4]/a[2]"))
 				.click();
-		Thread.sleep(1000);
 
 		driver.navigate().back();
 
 		driver.findElement(By.xpath("/html/body/div/div/div/div/div/div[2]/div[2]/table/tbody/tr[3]/td[4]/a[2]"))
 				.click();
-		Thread.sleep(1000);
 
 		driver.navigate().back();
 
 		driver.findElement(By.xpath("/html/body/div/div/div/div/div/div[2]/div[2]/table/tbody/tr[4]/td[4]/a[2]"))
 				.click();
-		Thread.sleep(1000);
 
 		driver.navigate().back();
 
 		driver.findElement(By.xpath("/html/body/div/div/div/div/div/div[2]/div[2]/table/tbody/tr[5]/td[4]/a[2]"))
 				.click();
-		Thread.sleep(1000);
 
 		driver.navigate().back();
 
 		driver.findElement(By.xpath("/html/body/div/div/div/div/div/div[2]/div[2]/table/tbody/tr[6]/td[4]/a[2]"))
 				.click();
-		Thread.sleep(1000);
 
 		driver.navigate().back();
 

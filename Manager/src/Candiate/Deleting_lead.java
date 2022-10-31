@@ -1,5 +1,7 @@
 package Candiate;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,11 +16,13 @@ public class Deleting_lead {
 		// maximize the window
 		driver.manage().window().maximize();
 
+		// Implicit Wait
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+		
+        //link
 		driver.get("http://ec2-65-1-5-19.ap-south-1.compute.amazonaws.com:8000/");
-		Thread.sleep(3000);
 
 		driver.findElement(By.linkText("LOGIN")).click(); // using Selenium click button method
-		Thread.sleep(3000);
 
 		// Enter unsername and password
 		driver.findElement(By.id("username")).sendKeys("alokkumar@nttf.co.in");
@@ -27,7 +31,6 @@ public class Deleting_lead {
 		// Click login button
 		WebElement loginButtonId = driver.findElement(By.xpath("/html/body/section/form/div[3]/button"));
 		loginButtonId.click();
-		Thread.sleep(2000);
 
 		// Click Candidate button
 		WebElement can = driver.findElement(By.xpath("//*[@id=\"sidebar\"]/ul/li[3]/a"));

@@ -1,10 +1,14 @@
 package Administation;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class My_Team {
 	public static void main(String[] args) throws InterruptedException {
@@ -12,21 +16,24 @@ public class My_Team {
 		System.setProperty("webdriver.chrome.driver",
 				"C:\\Users\\shanj\\Downloads\\chromedriver_win32\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
+		// Explicit Wait
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
+		// Implicit Wait
+		// driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 
 		// maximize the window
 		driver.manage().window().maximize();
 
 		driver.get("http://ec2-65-1-5-19.ap-south-1.compute.amazonaws.com:8000/");
-		Thread.sleep(3000);
 
 		driver.findElement(By.linkText("LOGIN")).click(); // using Selenium click button method
-		Thread.sleep(3000);
+
 		driver.findElement(By.id("username")).sendKeys("manager@gmail.com");
 		driver.findElement(By.name("password")).sendKeys("P@ssw0rd@123");
 
 		WebElement loginButtonId = driver.findElement(By.xpath("/html/body/section/form/div[3]/button"));
 		loginButtonId.click();
-		Thread.sleep(2000);
 
 		// Click Administration Dropdown button
 		WebElement admin = driver.findElement(By.xpath("//*[@id=\"sidebar\"]/ul/li[2]/a"));
@@ -34,8 +41,8 @@ public class My_Team {
 
 		// Click Myteam
 		WebElement team = driver.findElement(By.xpath("//*[@id=\"administration\"]/ul/li/a"));
+		wait.until(ExpectedConditions.visibilityOf(team));
 		team.click();
-		Thread.sleep(2000);
 
 		// Add team Member
 		WebElement add = driver.findElement(By.xpath("/html/body/div/div/div/div/div/div[2]/div[1]/div/a"));
@@ -69,12 +76,9 @@ public class My_Team {
 		// Using the object of select class, select option
 		dd.selectByIndex(2);
 
-		Thread.sleep(2000);
-
 		// click save button
 		WebElement save = driver.findElement(By.xpath("//*[@id=\"submit_btn\"]"));
 		save.click();
-		Thread.sleep(2000);
 
 		// Search box
 
@@ -108,12 +112,9 @@ public class My_Team {
 		WebElement role1 = driver.findElement(By.name("role"));
 		Select rol = new Select(role1);
 		rol.selectByIndex(2);
-		Thread.sleep(2000);
 
 		// Click save button
 		driver.findElement(By.id("submit_btn")).click();
-
-		Thread.sleep(2000);
 
 		// Search box
 		driver.findElement(By.xpath("//*[@id=\"search\"]")).sendKeys("Mohammed");
